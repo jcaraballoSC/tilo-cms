@@ -1,0 +1,14 @@
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/emissions">Emisiones</a></li>
+    <li class="active">Mostrar</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %></h2>
+   <div class="form-horizontal">
+    <fieldset>
+      <legend><%= @title_form %> <%= @emission.name %>  <%= link_to 'Editar', edit_trade_path(@emission), :class => 'btn btn-primary btn-xs' %></legend>
+      	<span class="control-label"><b>Nombre:</b></span>
+      	   <%= @emission.name %>
+    </fieldset>
+    </div>

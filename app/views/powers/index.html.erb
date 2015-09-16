@@ -1,0 +1,41 @@
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/power">Encendido</a></li>
+    <li class="active">Lista</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %> <%= @emission.name %></h2>
+  <div class="button-rigth-action">
+    <%= link_to 'Nuevo horario', powers_new_path, { :class=>"btn btn-primary" } %>
+  </div>
+  <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+      <th>Día</th>
+      <th>Encendido</th>
+      <th>Apagado</th>
+      <th class="table-center-text">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+  <tbody>
+    <% @powers.each do |power| %>
+      <tr>
+        <td><%= power.day %></td>
+        <td><%= power.start %></td>
+        <td><%= power.end %></td>
+        <td width="140px">
+          <div class="btn-group">
+              <span class="btn btn-default btn-sm">Seleccione</span>
+                <a href="#" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      
+                      
+                  </ul>
+            </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

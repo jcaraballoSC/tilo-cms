@@ -1,0 +1,58 @@
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4 status-server" ng-controller="status-server">
+    <h3 class="module-title">Estado Servidor</h3>
+      <div class="divider divider-dashed"></div>
+        <h4 class="progress-label status-title">CPU<span class="pull-right">{{items['servers']['0']['summary']['cpu']}}%</span></h3>
+        <div ng-if="items['servers']['0']['summary']['cpu'] <= 50">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-success" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['cpu'] + '%' }"></div>
+          </div>
+        </div>
+        <div ng-if="items['servers']['0']['summary']['cpu'] > 50 && items['servers']['0']['summary']['cpu'] < 90">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-warning" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['cpu'] + '%' }"></div>
+          </div>
+        </div>
+        <div ng-if="items['servers']['0']['summary']['cpu'] > 90">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-danger" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['cpu'] + '%' }"></div>
+          </div>
+        </div>
+            <h4 class="progress-label status-title">Memoria<span class="pull-right">{{items['servers']['0']['summary']['memory']}}%</span></h3>
+        <div ng-if="items['servers']['0']['summary']['memory'] <= 50">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-success" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['memory'] + '%' }"></div>
+          </div>
+        </div>
+        <div ng-if="items['servers']['0']['summary']['memory'] > 50 && items['servers']['0']['summary']['memory'] < 90">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-warning" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['memory'] + '%' }"></div>
+          </div>
+        </div>
+        <div ng-if="items['servers']['0']['summary']['memory'] > 90">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-danger" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['memory'] + '%' }"></div>
+          </div>
+        </div>
+      <h4 class="progress-label status-title">Disco Duro<span class="pull-right">{{items['servers']['0']['summary']['fullest_disk']}}%</span></h3>
+        <div ng-if="items['servers']['0']['summary']['fullest_disk'] <= 50">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-success" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['fullest_disk'] + '%' }"></div>
+          </div>
+        </div>
+        <div ng-if="items['servers']['0']['summary']['fullest_disk'] > 50 && item[0]['summary']['v'] < 90">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-warning" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['fullest_disk'] + '%' }"></div>
+          </div>
+        </div>
+        <div ng-if="items['servers']['0']['summary']['fullest_disk'] > 90">
+          <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-danger" role="progressbar"  aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: items['servers']['0']['summary']['fullest_disk'] + '%' }"></div>
+          </div>
+        </div>
+
+      </div>
+</div>

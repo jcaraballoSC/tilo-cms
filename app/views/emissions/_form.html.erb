@@ -1,0 +1,450 @@
+<%= form_for(@emission) do |f| %>
+  <% if @emission.errors.any? %>
+    <div class="bs-component">
+        <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4 class="messages">Error!</h4>
+                <ul>
+                <% @emission.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+                </ul>
+        </div>
+  </div>
+  <% end %>
+  <div class="form-horizontal">
+    <fieldset>
+      <legend><%= @title_form %></legend>
+      <div class="form-group">
+          <%= f.label :trade_id, 'Empresa', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+          <%= f.select(:trade_id, options_from_collection_for_select(@trade, "id", "name"), {:prompt => "Seleccione"}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :name, 'Nombre', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :name, :class => 'form-control'  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :country, 'País', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:country, options_for_select([['Seleccione', ''],
+              ['Uruguay', 1], 
+              ['Argentina', 2],
+              ['Brasil', 3]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :state, 'Departamento', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:state, options_for_select([['Seleccione', ''],
+            ['Artigas', 'Artigas'], 
+            ['Cerro Largo', 'Cerro Largo'],
+            ['Durazno', 'Durazno'],
+            ['Florida', 'Florida'],
+            ['Maldonado', 'Maldonado'],
+            ['Paysandú', 'Paysandú'],
+            ['Rivera', 'Rivera'],
+            ['Salto', 'Salto'],
+            ['Soriano', 'Soriano'],
+            ['Treinta y Tres', 'Treinta y Tres'],
+            ['Canelones', 'Canelones'],
+            ['Colonia', 'Colonia'],
+            ['Flores', 'Flores'],
+            ['Lavalleja', 'Lavalleja'],
+            ['Montevideo', 'Montevideo'],
+            ['Río Negro', 'Río Negro'],
+            ['Rocha', 'Rocha'],
+            ['San José', 'San José'],
+            ['Tacuarembó', 'Tacuarembó'],],
+             disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :city, 'Ciudad', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :city, :class => 'form-control'  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, 'Email', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :email, :class => 'form-control'  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :template, 'Plantilla', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:template, options_for_select([['Seleccione', ''],
+              ['2 turnadores independientes', 1], 
+              ['2 turnadores dependientes', 2],
+              ['3 turnadores independientes', 3],
+              ['3 turnadores dependientes', 4],
+              ['6 turnadores dependientes', 5],
+              ['6 turnadores dependientes', 6],
+              ['Contenidos sin turnadores', 7],
+              ['Contenidos a pantalla completa', 8]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :content, 'Contenido', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:content, options_for_select([['Seleccione', ''],
+              ['Slider', 1], 
+              ['TV', 2],
+              ['Streaming', 3]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <%= f.hidden_field :send_restart, :value => false %>
+        <div class="form-group">
+          <%= f.label :news_source, 'Noticias', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.label :news_source, 'El País' %>
+            <%= check_box_tag  "news_source[]", 1 %>
+            <br>
+            <%= f.label :news_source, 'El Observador' %>
+            <%= check_box_tag  "news_source[]", 2 %>
+            <br>
+            <%= f.label :news_source, 'El Espectador' %>
+            <%= check_box_tag  "news_source[]", 3 %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :football, 'Fútbol', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:football, options_for_select([['Sí', true], ['No', false]]), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :channel, 'TV por defecto', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:channel, options_for_select([['Seleccione', ''],
+              ['4', 4], 
+              ['10', 10],
+              ['12', 12]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :color, 'Color', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.color_field(:color, :value => '#0c61b1')%>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :id_teamviewer, 'Id Team Viewer', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :id_teamviewer, :class => 'form-control'  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :caller_fullscreen, 'Llamadores pantalla completa', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+          <%= f.select(:caller_fullscreen, options_for_select([['Sí', true], ['No', false]]), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+   </fieldset>
+        <div class="sep"></div>
+
+<div class="form-group">
+                    <label class="col-lg-2 control-label">Tipo de emisión</label>
+                    <div class="col-lg-10">
+                      <div class="radio">
+                        <label>
+                         <%= f.radio_button :type_emission, 'callers', :checked => true %> Llamadores
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                        <%= f.radio_button :type_emission, 'big_screen' %> Pantalla Gigante 
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+    <div id="Emissioncallers" class="desc">
+    <fieldset>
+      <legend>LLamador 1</legend>
+        <div class="form-group">
+          <%= f.label :name_caller_1, 'Nombre', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:name_caller_1, options_for_select([['Seleccione', ''],
+              ['Panadería', 'Panadería'], 
+              ['Carnicería', 'Carnicería'],
+              ['Fiambrería', 'Fiambrería'],
+              ['Verdulería', 'Verdulería'],
+              ['Puesto 1', 'Puesto 1']],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_up_caller_1, 'Aumenta', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_up_caller_1, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_down_caller_1, 'Baja', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_down_caller_1, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+   </fieldset>
+        <div class="sep"></div>
+    <fieldset>
+      <legend>LLamador 2</legend>
+        <div class="form-group">
+          <%= f.label :name_caller_2, 'Nombre ', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:name_caller_2, options_for_select([['Seleccione', ''],
+              ['Panadería', 'Panadería'], 
+              ['Carnicería', 'Carnicería'],
+              ['Fiambrería', 'Fiambrería'],
+              ['Verdulería', 'Verdulería'],
+              ['Puesto 2', 'Puesto 2']],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_up_caller_2, 'Aumenta', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_up_caller_2, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_down_caller_2, 'Baja', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_down_caller_2, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+   </fieldset>
+        <div class="sep"></div>
+    <fieldset>
+      <legend>LLamador 3</legend>
+        <div class="form-group">
+          <%= f.label :name_caller_3, 'Turnador 3', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:name_caller_3, options_for_select([['Seleccione', ''],
+              ['Panadería', 'Panadería'], 
+              ['Carnicería', 'Carnicería'],
+              ['Fiambrería', 'Fiambrería'],
+              ['Verdulería', 'Verdulería'],
+              ['Puesto 3', 'Puesto 3']],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_up_caller_3, 'Aumenta', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_up_caller_3, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_down_caller_3, 'Baja', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_down_caller_3, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+   </fieldset>
+        <div class="sep"></div>
+    <fieldset>
+      <legend>LLamador 4</legend>
+        <div class="form-group">
+          <%= f.label :name_caller_4, 'Turnador 4', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:name_caller_4, options_for_select([['Seleccione', ''],
+              ['Panadería', 'Panadería'], 
+              ['Carnicería', 'Carnicería'],
+              ['Fiambrería', 'Fiambrería'],
+              ['Verdulería', 'Verdulería'],
+              ['Puesto 4', 'Puesto 4']],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_up_caller_4, 'Aumenta', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_up_caller_4, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_down_caller_4, 'Baja', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_down_caller_4, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+   </fieldset>
+        <div class="sep"></div>
+    <fieldset>
+      <legend>LLamador 5</legend>
+        <div class="form-group">
+          <%= f.label :name_caller_5, 'Turnador 5', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:name_caller_5, options_for_select([['Seleccione', ''],
+              ['Panadería', 'Panadería'], 
+              ['Carnicería', 'Carnicería'],
+              ['Fiambrería', 'Fiambrería'],
+              ['Verdulería', 'Verdulería'],
+              ['Puesto 5', 'Puesto 5']],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_up_caller_5, 'Aumenta', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_up_caller_5, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_down_caller_5, 'Baja', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_down_caller_5, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+   </fieldset>
+        <div class="sep"></div>
+    <fieldset>
+      <legend>LLamador 6</legend>
+        <div class="form-group">
+          <%= f.label :name_caller_6, 'Turnador 6', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:name_caller_6, options_for_select([['Seleccione', ''],
+              ['Panadería', 'Panadería'], 
+              ['Carnicería', 'Carnicería'],
+              ['Fiambrería', 'Fiambrería'],
+              ['Verdulería', 'Verdulería'],
+              ['Puesto 6', 'Puesto 6']],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_up_caller_6, 'Aumenta', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_up_caller_6, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :keycode_down_caller_6, 'Baja', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.select(:keycode_down_caller_6, options_for_select([['Seleccione', ''],
+              ['49', 49], 
+              ['122', 122],
+              ['52', 52],
+              ['54', 54],
+              ['56', 56],
+              ['55', 55]],
+               disabled: [''], selected: ['']), {}, {class: "form-control"}) %>
+          </div>
+        </div>
+    </div>
+    <div id="Emissionbig_screen" class="desc" style="display: none;">
+          <div class="form-group">
+          <%= f.label :width, 'Ancho', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :width, :class => 'form-control'  %>
+          </div>
+        </div>
+          <div class="form-group">
+          <%= f.label :height, 'Alto', :class => 'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :height, :class => 'form-control'  %>
+          </div>
+        </div>
+    </div>
+</div>
+</fieldset>
+<div class="actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-primary pull-right' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("input[name$='emission[type_emission]']").click(function() {
+        var test = $(this).val();
+        $("div.desc").hide();
+        $("#Emission" + test).show();
+    });
+});
+</script>

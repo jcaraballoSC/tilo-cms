@@ -1,0 +1,33 @@
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/users">Usuarios</a></li>
+    <li class="active">Lista</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %> <%= @user.first_name %> <%= @user.last_name %></h2>
+  <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+      <th>Emision</th>
+      <th class="table-center-text">Permisos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+  <tbody>
+    <% @emissions.each do |emission| %>
+      <tr>
+        <td><%= emission.name %></td>
+        <td width="140px">
+          <% if (emission.users.present?) %>
+              <%=  link_to "Eliminar Permisos", permissions_create_path(@user.id,emission.id), method: :delete, class: "btn btn-danger btn-flat btn-sm md-trigger" %>
+          <% else %>
+               <%=  link_to "Agregar Permisos", permissions_delete_path(@user.id,emission.id), class: "btn btn-primary btn-flat btn-sm md-trigger" %> 
+          <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

@@ -1,0 +1,57 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="bs-component">
+        <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4 class="messages">Error!</h4>
+                <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+                </ul>
+        </div>
+  </div>
+  <% end %>
+    <div class="form-horizontal">
+    <fieldset>
+      <legend><%= @title_form %></legend>
+        <div class="form-group">
+        <%= f.label :first_name, 'Nombre', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= f.text_field :first_name, :class => 'form-control'  %>
+        </div>
+        </div>
+        <div class="form-group">
+        <%= f.label :last_name, 'Apellido', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= f.text_field :last_name, :class => 'form-control'  %>
+        </div>
+        </div>
+        <div class="form-group">
+        <%= f.label :phone, 'Teléfono', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= f.text_field :phone, :class => 'form-control'  %>
+        </div>
+        </div>
+        <div class="form-group">
+        <%= f.label :email, 'Email', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= f.text_field :email, :class => 'form-control'  %>
+        </div>
+        </div>
+          <div class="form-group">
+        <%= f.label :password, :class => 'col-lg-2 control-label' %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <div class="col-lg-10">
+        <%= f.password_field :password, autocomplete: "off",:class => 'form-control' %>
+        </div>
+      </div>
+</fieldset>
+
+  <div class="actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-primary pull-right' %>
+  </div>
+     </div>
+<% end %>

@@ -1,0 +1,123 @@
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li class="active">Media</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %></h2>
+  <div class="button-rigth-action">
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+   <i class="glyphicon glyphicon-upload"></i> Subir archivos</button>
+  </div>
+          <%= form_tag '/delete_media', method: :delete do %>
+          <div class="row">
+            <div class="col-lg-6">
+              <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger", disabled: @media_contents.empty? %>
+            </div>
+          </div>
+      <% if @media_contents.empty? %>
+                <h5 id="no-media">No Media Found</h5>
+              <% else %>
+              <div class="sortable">
+       <% @media_contents.each do |media| %>
+      <div class="list-sor" data-id="<%= media.position %>">
+     <span class="move glyphicon glyphicon-move"></span>
+     <img src="<%= media.file_name.url %>" witdth="100px" height="60px">
+      <span class="tx"><%= media.tipe %></span>
+      <span class="tx"><%= media.size %></span>
+      <span class="tx"><%= media.start_publish %></span>
+      <span class="tx"><%= media.end_publish %></span>
+      <span class="tx"><%= media.time_to_air %></span>
+      <span class="txcheck"><%= check_box_tag "media_contents[]", media.id %></span>
+    </div>
+    <% end %>
+<% end %>
+<% end %>
+ </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog media">
+    <div class="modal-content media">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Subir nuevos archivos</h4>
+      </div>
+      <div class="modal-body">
+      <%= form_tag '/media_contents', method: :post, class: "dropzone form", id: "my-awesome-dropzone" do %>
+       <%= hidden_field_tag :emission_id, @emission.id%>
+      <div class="form-group fm">
+      <%= label_tag :start_publish, 'Inicio', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= text_field_tag  :start_publish, nil, class: 'form-control' %>
+        </div>
+        </div>
+        <div class="form-group fm">
+        <%= label_tag :end_publish, 'Fin', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= text_field_tag  :end_publish, nil, class: 'form-control' %>
+        </div>
+        </div>
+        <div class="dz-message" data-dz-message>
+        <span class="drop">Arrastra los archivos desde tu computadora<br>
+        o puedes hacer aquí para seleccionar.</span>
+        </div>
+          <div class="fallback">
+          <%= file_field_tag "media", multiple: true%>
+          </div>
+          <div class="btnsub">
+          <%= submit_tag 'Subir archivos', :class => 'btn btn-primary pull-right', :id => 'btn-submit' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var ready, set_positions;
+
+set_positions = function(){
+    // loop through and give each task a data-pos
+    // attribute that holds its position in the DOM
+    $('.panel.panel-default').each(function(i){
+        $(this).attr("data-pos",i+1);
+    });
+}
+
+ready = function(){
+
+    // call set_positions function
+    set_positions();
+    
+    $('.sortable').sortable();
+}
+
+$(document).ready(ready);
+/**
+ * if using turbolinks
+ */
+$(document).on('page:load', ready);
+
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    $('#start_publish').datetimepicker({
+      format: 'DD/MM/YYYY H:mm'
+      });
+        });
+  $(function () {
+    $('#end_publish').datetimepicker({
+      format: 'DD/MM/YYYY H:mm'
+      });
+        });
+
+$(".close").click(function(event) {
+    event.preventDefault();
+     location.reload();
+});
+
+
+
+
+</script>

@@ -1,0 +1,13 @@
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/trades">Empresas</a></li>
+    <li class="active">Crear</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %></h2>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @trade %> |
+<%= link_to 'Back', trades_path %>
+

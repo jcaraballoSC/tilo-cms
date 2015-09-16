@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="login-content">
+      
+      <div class="brand"><%=image_tag("logo_dobled_tilo.png")%></div>
+          <%= render 'shared/flash.html.erb' %>
+        <!-- formulario de login de usuarios -->
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.label :email,'Correo electrónico'%>
+            <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+
+            <%= f.label :password, 'Contraseña'%><br />
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+            <div class="separator_remember">
+            <% if devise_mapping.rememberable? -%>       
+                <%= f.check_box :remember_me, :class => 'class="checkbox pull-left'%>
+                <%= f.label :remember_me, 'Recordarme', :class => 'remember'%>
+            <% end -%>
+            </div>
+            <%= f.submit "Iniciar Sesion", :class =>'btn btn-lg btn-primary btn-block' %>
+            <%= render "devise/shared/links" %>
+          <% end %>       
+    </div>
+</div><!-- /container -->
+
+
+
+
+
