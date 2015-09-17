@@ -15,7 +15,6 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   #Server files compiled in productions
-  config.assets.compile = true
   config.serve_static_assets = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
