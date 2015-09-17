@@ -8,4 +8,12 @@ class Emission < ActiveRecord::Base
 
 	#Permite serializar los multiples chechboxes de la opciones news_sources
 	serialize :news_source
+
+	#Se genera las llaves para las emisiones
+	def converted_to_key
+		 collect = [self.name, self.trade_id].join("")
+    	key_generate = Digest::MD5.hexdigest(collect)
+    	self.key = key_generate[0..7]
+    end
+
 end
