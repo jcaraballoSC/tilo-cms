@@ -94,6 +94,13 @@ if (!@message)
 		json.end_publish upload.end_publish
 		json.position upload.position
 	end
+	
+	json.Powers (@powers) do |power|
+		json.day power.day
+		json.on power.on
+		json.off power.off
+	end
+
 else
 	json.Error (@message)
 end
