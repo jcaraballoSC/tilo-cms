@@ -48,9 +48,12 @@ gem "fog-aws"
 gem 'pg'
 #Figaro
 gem "figaro"
-#Gema para deploy en heroku - produccion
-gem 'rails_12factor', group: :production
 
+gem 'passenger'
+group :production do
+	#Gema para deploy en heroku - produccion
+	gem 'rails_12factor', group: :production
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
