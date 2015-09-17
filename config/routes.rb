@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :trades
   resources :emissions
-  resources :media_contents, only: [:create]
+
   devise_for :users
 
   devise_scope :user do
@@ -24,9 +24,9 @@ Rails.application.routes.draw do
       get 'powers/new/:id',  to: 'powers#new', as:'powers_new'
       post '/powers/:id', to: 'powers#create'
 
-      #Manejo de uploads sobre emisiones
-      get 'media/:id', to: 'media_contents#index'
-      delete 'delete_media', to: "media_contents#delete_media"
+      get 'uploads/:id', to: 'uploads#index'
+      get 'uploads/new/:id', to: 'uploads#new'
+      post 'uploads', to: 'uploads#create'
 
     end
       #Establece la pagina de login es la home para los usuarios no logueados

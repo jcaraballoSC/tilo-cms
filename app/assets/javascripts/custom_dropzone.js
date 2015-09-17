@@ -9,17 +9,13 @@ Dropzone.options.myAwesomeDropzone = { // The camelized version of the ID of the
     maxFiles: 100,
     uploadMultiple: true,
     addRemoveLinks: true,
-    url: urls,
+    url: '/media_contents',
     dictRemoveFile: ' <span class="btn btn-danger drop">Eliminar</span>',
-    previewsContainer: ".dropzone-previews",
 
     // The setting up of the dropzone
     init: function() {
 
         var submitButton = document.querySelector("#btn-submit");
-
-        
-
         var myDropzone = this;
 
         // First change the button to actually tell Dropzone to process the queue.

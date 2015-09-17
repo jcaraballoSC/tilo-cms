@@ -38,13 +38,19 @@ gem 'dropzonejs-rails'
 #Datepicker
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
-#Gema para subir archivos
+#Subir archivos
 gem 'carrierwave'
-#Gema para servidor web
-gem 'passenger'
+#Subir directamente a S3
+gem 'carrierwave_direct'
+#Integracion de Fog con AWS
+gem "fog-aws"
+#Postgresql
+gem 'pg'
+#Figaro
+gem "figaro"
+#Gema para deploy en heroku - produccion
+gem 'rails_12factor', group: :production
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -11,194 +11,204 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911154538) do
+ActiveRecord::Schema.define(version: 20150916195757) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "emissions", force: :cascade do |t|
-    t.string   "name",                  limit: 255
-    t.string   "key",                   limit: 255
-    t.string   "country",               limit: 255
-    t.string   "state",                 limit: 255
-    t.string   "city",                  limit: 255
-    t.string   "email",                 limit: 255
-    t.integer  "template",              limit: 4
-    t.integer  "content",               limit: 4
-    t.integer  "channel",               limit: 4
+    t.string   "name"
+    t.string   "key"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "email"
+    t.integer  "template"
+    t.integer  "content"
+    t.integer  "channel"
     t.boolean  "send_restart"
-    t.string   "news_source",           limit: 255
+    t.string   "news_source"
     t.boolean  "football"
-    t.string   "color",                 limit: 255
-    t.string   "path_sponsor",          limit: 255
-    t.string   "id_teamviewer",         limit: 255
-    t.string   "type_emission",         limit: 255
-    t.string   "width",                 limit: 255
-    t.string   "height",                limit: 255
+    t.string   "color"
+    t.string   "path_sponsor"
+    t.string   "id_teamviewer"
+    t.string   "type_emission"
+    t.string   "width"
+    t.string   "height"
     t.boolean  "caller_fullscreen"
-    t.string   "name_caller_1",         limit: 255
-    t.string   "keycode_up_caller_1",   limit: 255
-    t.string   "keycode_down_caller_1", limit: 255
-    t.string   "name_caller_2",         limit: 255
-    t.string   "keycode_up_caller_2",   limit: 255
-    t.string   "keycode_down_caller_2", limit: 255
-    t.string   "name_caller_3",         limit: 255
-    t.string   "keycode_up_caller_3",   limit: 255
-    t.string   "keycode_down_caller_3", limit: 255
-    t.string   "name_caller_4",         limit: 255
-    t.string   "keycode_up_caller_4",   limit: 255
-    t.string   "keycode_down_caller_4", limit: 255
-    t.string   "name_caller_5",         limit: 255
-    t.string   "keycode_up_caller_5",   limit: 255
-    t.string   "keycode_down_caller_5", limit: 255
-    t.string   "name_caller_6",         limit: 255
-    t.string   "keycode_up_caller_6",   limit: 255
-    t.string   "keycode_down_caller_6", limit: 255
-    t.integer  "trade_id",              limit: 4
+    t.string   "name_caller_1"
+    t.string   "keycode_up_caller_1"
+    t.string   "keycode_down_caller_1"
+    t.string   "name_caller_2"
+    t.string   "keycode_up_caller_2"
+    t.string   "keycode_down_caller_2"
+    t.string   "name_caller_3"
+    t.string   "keycode_up_caller_3"
+    t.string   "keycode_down_caller_3"
+    t.string   "name_caller_4"
+    t.string   "keycode_up_caller_4"
+    t.string   "keycode_down_caller_4"
+    t.string   "name_caller_5"
+    t.string   "keycode_up_caller_5"
+    t.string   "keycode_down_caller_5"
+    t.string   "name_caller_6"
+    t.string   "keycode_up_caller_6"
+    t.string   "keycode_down_caller_6"
+    t.integer  "trade_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "emissions_users", id: false, force: :cascade do |t|
-    t.integer "user_id",     limit: 4
-    t.integer "emission_id", limit: 4
+    t.integer "user_id"
+    t.integer "emission_id"
   end
 
   add_index "emissions_users", ["emission_id"], name: "index_emissions_users_on_emission_id", using: :btree
   add_index "emissions_users", ["user_id"], name: "index_emissions_users_on_user_id", using: :btree
 
   create_table "finance_uys", force: :cascade do |t|
-    t.string "currency",       limit: 255
-    t.float  "buy_now",        limit: 24
-    t.float  "sale_now",       limit: 24
-    t.string "buy_variatiuon", limit: 255
-    t.string "sale_variation", limit: 255
-    t.float  "buy_yesterday",  limit: 24
-    t.float  "sale_yesterday", limit: 24
-    t.string "country",        limit: 255
-    t.string "updated",        limit: 255
+    t.string "currency"
+    t.float  "buy_now"
+    t.float  "sale_now"
+    t.string "buy_variatiuon"
+    t.string "sale_variation"
+    t.float  "buy_yesterday"
+    t.float  "sale_yesterday"
+    t.string "country"
+    t.string "updated"
   end
 
   create_table "horoscopes", force: :cascade do |t|
-    t.string "sign",        limit: 255
-    t.string "description", limit: 255
-    t.string "language",    limit: 255
-    t.string "day",         limit: 255
-    t.string "updated",     limit: 255
+    t.string "sign"
+    t.string "description"
+    t.string "language"
+    t.string "day"
+    t.string "updated"
   end
 
   create_table "key_auths", force: :cascade do |t|
-    t.string   "key_server", limit: 255
-    t.string   "key_client", limit: 255
-    t.string   "key_status", limit: 255
+    t.string   "key_server"
+    t.string   "key_client"
+    t.string   "key_status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "machines", force: :cascade do |t|
-    t.string   "cpu",          limit: 255
-    t.string   "ram",          limit: 255
-    t.string   "disk",         limit: 255
+    t.string   "cpu"
+    t.string   "ram"
+    t.string   "disk"
     t.boolean  "status_video"
-    t.integer  "emission_id",  limit: 4,   null: false
+    t.integer  "emission_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "media", force: :cascade do |t|
-    t.string   "file_name",     limit: 255
-    t.string   "path",          limit: 255
-    t.string   "tipe",          limit: 255
-    t.string   "size",          limit: 255
-    t.string   "md5",           limit: 255
-    t.string   "start_publish", limit: 255
-    t.string   "end_publish",   limit: 255
-    t.integer  "time_to_air",   limit: 4
-    t.integer  "position",      limit: 4
-    t.integer  "emission_id",   limit: 4
+    t.string   "file_name"
+    t.string   "start_publish"
+    t.string   "end_publish"
+    t.integer  "time_to_air"
+    t.integer  "position"
+    t.integer  "emission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "news_uys", force: :cascade do |t|
-    t.string "title",       limit: 255
-    t.string "description", limit: 255
-    t.string "category",    limit: 255
-    t.string "image_url",   limit: 255
-    t.string "newspaper",   limit: 255
-    t.string "updated",     limit: 255
+    t.string "title"
+    t.string "description"
+    t.string "category"
+    t.string "image_url"
+    t.string "newspaper"
+    t.string "updated"
   end
 
   create_table "powers", force: :cascade do |t|
-    t.integer  "day",         limit: 4
-    t.string   "start",       limit: 255
-    t.string   "end",         limit: 255
-    t.integer  "emission_id", limit: 4
+    t.integer  "day"
+    t.string   "start"
+    t.string   "end"
+    t.integer  "emission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "statistics", force: :cascade do |t|
-    t.string   "date",                    limit: 255
-    t.integer  "average_time_turnador_1", limit: 4
-    t.integer  "average_time_turnador_2", limit: 4
-    t.integer  "average_time_turnador_3", limit: 4
-    t.integer  "average_time_turnador_4", limit: 4
-    t.integer  "average_time_turnador_5", limit: 4
-    t.integer  "average_time_turnador_6", limit: 4
-    t.integer  "emission_id",             limit: 4
+    t.string   "date"
+    t.integer  "average_time_turnador_1"
+    t.integer  "average_time_turnador_2"
+    t.integer  "average_time_turnador_3"
+    t.integer  "average_time_turnador_4"
+    t.integer  "average_time_turnador_5"
+    t.integer  "average_time_turnador_6"
+    t.integer  "emission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "trades", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string   "name"
+    t.string   "start_publish"
+    t.string   "end_publish"
+    t.integer  "time_to_air"
+    t.integer  "position"
+    t.integer  "emission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
-    t.integer  "phone",                  limit: 4
-    t.integer  "role",                   limit: 4
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "phone"
+    t.integer  "role"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "weather_next_days_uys", force: :cascade do |t|
-    t.string  "id_up",           limit: 255
-    t.string  "city",            limit: 255
-    t.string  "country",         limit: 255
-    t.integer "temperature_min", limit: 4
-    t.integer "temperature_max", limit: 4
-    t.string  "description",     limit: 255
-    t.integer "humidity",        limit: 4
-    t.string  "icon",            limit: 255
-    t.string  "pronostic_day",   limit: 255
-    t.string  "updated",         limit: 255
+    t.string  "id_up"
+    t.string  "city"
+    t.string  "country"
+    t.integer "temperature_min"
+    t.integer "temperature_max"
+    t.string  "description"
+    t.integer "humidity"
+    t.string  "icon"
+    t.string  "pronostic_day"
+    t.string  "updated"
   end
 
   create_table "weather_now_uys", force: :cascade do |t|
-    t.string  "city",        limit: 255
-    t.string  "country",     limit: 255
-    t.integer "temperature", limit: 4
-    t.string  "description", limit: 255
-    t.integer "humidity",    limit: 4
-    t.string  "icon",        limit: 255
-    t.integer "wind",        limit: 4
-    t.integer "pressure",    limit: 4
-    t.string  "updated",     limit: 255
+    t.string  "city"
+    t.string  "country"
+    t.integer "temperature"
+    t.string  "description"
+    t.integer "humidity"
+    t.string  "icon"
+    t.integer "wind"
+    t.integer "pressure"
+    t.string  "updated"
   end
 
 end
