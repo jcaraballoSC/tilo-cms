@@ -127,8 +127,8 @@ ActiveRecord::Schema.define(version: 20150916195757) do
 
   create_table "powers", force: :cascade do |t|
     t.integer  "day"
-    t.string   "start"
-    t.string   "end"
+    t.string   "on"
+    t.string   "off"
     t.integer  "emission_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -76,6 +76,6 @@ class PowersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_params
-      params.require(:power).permit(:day, :start, :end)
+      params.require(:power).permit(:day, :on, :off)
     end
 end
