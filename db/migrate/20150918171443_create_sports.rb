@@ -11,7 +11,7 @@ class CreateSports < ActiveRecord::Migration
       t.string :status
       t.string :time
       t.string :date
-      t.string :view_play
+      t.string :show
       t.string :url
       t.timestamps null: false
     end
