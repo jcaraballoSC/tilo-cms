@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :sports
   resources :users
   resources :trades
   resources :emissions
