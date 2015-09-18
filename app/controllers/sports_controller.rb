@@ -69,6 +69,6 @@ class SportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sport_params
-      params.require(:sport).permit(:tipe, :url, :start_time)
+      params.require(:sport).permit(:tipe, :url, :date)
     end
 end

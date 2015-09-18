@@ -10,7 +10,7 @@ class CreateSports < ActiveRecord::Migration
       t.string :logo_visitor
       t.string :status
       t.string :time
-      t.string :start_time
+      t.string :date
       t.string :view_play
       t.string :url
       t.timestamps null: false
