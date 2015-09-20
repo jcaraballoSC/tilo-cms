@@ -80,8 +80,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    dropzonejs-rails (0.7.1)
-      rails (> 3.1)
     erubis (2.7.0)
     excon (0.45.4)
     execjs (2.5.2)
@@ -309,7 +307,6 @@ DEPENDENCIES
   carrierwave_direct
   coffee-rails (~> 4.1.0)
   devise
-  dropzonejs-rails
   figaro
   fog-aws
   jbuilder (~> 2.0)

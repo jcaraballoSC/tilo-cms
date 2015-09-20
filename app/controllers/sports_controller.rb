@@ -25,6 +25,7 @@ class SportsController < ApplicationController
   # POST /sports.json
   def create
     @sport = Sport.new(sport_params)
+    @sport.show = 0
 
     respond_to do |format|
       if @sport.save

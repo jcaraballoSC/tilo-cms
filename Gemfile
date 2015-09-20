@@ -33,8 +33,6 @@ gem 'bootswatch-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 #Angular js
 gem 'angularjs-rails'
-#Dropzone
-gem 'dropzonejs-rails'
 #Datepicker
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
