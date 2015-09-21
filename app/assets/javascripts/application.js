@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 //= require angular
 //= require angular-resource
 //= require_tree .
@@ -22,7 +21,8 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require sortable
-//= require twitter/bootstrap
+//= require moment/es
+
 $(document).ready(function() {
   NProgress.configure({ parent: '#loading' });
   NProgress.configure({ showSpinner: false });
