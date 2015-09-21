@@ -20,8 +20,9 @@
 //= require nprogress-turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
-//= require sortable
 //= require moment/es
+//= require sortable
+
 
 $(document).ready(function() {
   NProgress.configure({ parent: '#loading' });

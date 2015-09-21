@@ -32,10 +32,10 @@ gem 'bootswatch-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 #Angular js
 gem 'angularjs-rails'
-#Datepicker
-gem 'bootstrap3-datetimepicker-rails'
 #Necesario para datetimepicker
-gem 'momentjs-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+#Datepicker
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 #Subir archivos
 gem 'carrierwave'
 #Subir directamente a S3
