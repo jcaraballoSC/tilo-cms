@@ -22,7 +22,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require sortable
-
+//= require twitter/bootstrap
 $(document).ready(function() {
   NProgress.configure({ parent: '#loading' });
   NProgress.configure({ showSpinner: false });

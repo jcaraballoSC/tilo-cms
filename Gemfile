@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Permite crear login de usuarios
+# Permite crear login de usuariCambios en formularioos
 gem 'devise'
 #Loader
 gem 'nprogress-rails'
@@ -36,6 +36,9 @@ gem 'angularjs-rails'
 #Datepicker
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+#Necesario para datetimepicker
+gem "therubyracer"
+gem "twitter-bootstrap-rails"
 #Subir archivos
 gem 'carrierwave'
 #Subir directamente a S3
@@ -46,6 +49,7 @@ gem "fog-aws"
 gem 'pg'
 #Figaro
 gem "figaro"
+
 
 gem 'passenger'
 group :production do
