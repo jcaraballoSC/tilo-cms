@@ -22,9 +22,13 @@
       </div>
 
   <script type="text/javascript">
-  $(function () {
-    $('#upload_start_publish').datepicker({
+   $(document).ready(function(){
+    $('#upload_start_publish').datetimepicker({
+      viewMode: 'years'
+    });
+        $('#upload_end_publish').datetimepicker({
       viewMode: 'years'
     });
   });
  </script>
+

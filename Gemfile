@@ -49,6 +49,8 @@ gem "fog-aws"
 gem 'pg'
 #Figaro
 gem "figaro"
+#Jquery ui
+gem 'jquery-ui-rails'
 
 
 gem 'passenger'
