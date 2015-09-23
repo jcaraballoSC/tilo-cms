@@ -1,10 +1,83 @@
-<% @uploads.each do |upload| %>
-
-  <img src="<%= upload.name %>">
-<%= upload.name %>
-<%= upload.start_publish %>
-
+<ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li class="active">Contenidos</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %></h2>
+  <div class="button-rigth-action">
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+   <i class="glyphicon glyphicon-upload"></i> Subir archivos</button>
+  </div>
+          <%= form_tag '/delete_media', method: :delete do %>
+          <div class="row">
+            <div class="col-lg-6">
+              <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger", disabled: @uploads.empty? %>
+            </div>
+          </div>
+      <% if @uploads.empty? %>
+                <h5 id="no-media">No hay contenidos para esta emisión</h5>
+              <% else %>
+              <div class="sortable">
+       <% @uploads.each do |upload| %>
+      <div class="list-sor" data-id="<%= media.position %>">
+     <span class="move glyphicon glyphicon-move"></span>
+     <img src="<%= media.file_name.url %>" witdth="100px" height="60px">
+      <span class="tx"><%= upload.url %></span>
+      <span class="txcheck"><%= check_box_tag "upload_contents[]", upload.id %></span>
+    </div>
+    <% end %>
 <% end %>
+<% end %>
+ </div>
 
-<br>
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog media">
+    <div class="modal-content media">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Subir nuevos archivos</h4>
+      </div>
+      <div class="modal-body">
+    <%= form_for@upload,:html => {:multipart => true} do |f| %>
+	 <%= hidden_field_tag :emission_id, @emission.id%>
+      <div class="form-group">
+      <%= f.label :start_publish, 'Inicio', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= f.text_field  :start_publish, class: 'form-control' %>
+        </div>
+        </div>
+        <div class="form-group">
+        <%= f.label :end_publish, 'Fin', :class => 'col-lg-2 control-label' %>
+        <div class="col-lg-10">
+        <%= f.text_field   :end_publish, class: 'form-control' %>
+        </div>
+        </div>
+         <div class="form-group">
+        <%= f.file_field :name, multiple: true %>
+        </div>
+          <div class="btnsub">
+           <%= f.submit "Subir archivos", :class => 'btn btn-primary pull-right', :id => 'btn-submit' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+ $(document).ready(function(){
+  $(function () {
+    $('#upload_start_publish').datetimepicker({
+      format: 'DD/MM/YYYY H:mm'
+      });
+        });
+    $(function () {
+    $('#upload_end_publish').datetimepicker({
+      format: 'DD/MM/YYYY H:mm'
+      });
+        });
+ });
+</script>
+
 

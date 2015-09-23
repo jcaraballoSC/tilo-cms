@@ -4,6 +4,10 @@ class UploadsController < ApplicationController
   # GET /uploads
   def index
     @uploads = Upload.where(emission_id: params[:id])
+    @upload = Upload.new
+    @title_main = "Subir archivos"
+    @emission = Emission.find(params[:id])
+
   end
 
   # GET /uploads/1
