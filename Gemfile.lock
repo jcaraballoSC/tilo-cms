@@ -298,6 +298,7 @@ DEPENDENCIES
   carrierwave_direct
   coffee-rails (~> 4.1.0)
   devise
+  execjs
   figaro
   fog-aws
   jbuilder (~> 2.0)
