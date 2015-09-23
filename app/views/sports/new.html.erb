@@ -1,5 +1,8 @@
-<h1>New Sport</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', sports_path %>
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/sports">Deportes</a></li>
+    <li class="active">Crear</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %></h2>
+    	<%= render 'form' %>

@@ -105,17 +105,6 @@ ActiveRecord::Schema.define(version: 20150918171443) do
     t.datetime "updated_at"
   end
 
-  create_table "media", force: :cascade do |t|
-    t.string   "file_name"
-    t.string   "start_publish"
-    t.string   "end_publish"
-    t.integer  "time_to_air"
-    t.integer  "position"
-    t.integer  "emission_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "news_uys", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -144,8 +133,8 @@ ActiveRecord::Schema.define(version: 20150918171443) do
     t.string   "logo_visitor"
     t.string   "status"
     t.string   "time"
-    t.string   "start_time"
-    t.string   "view_play"
+    t.string   "date"
+    t.string   "show"
     t.string   "url"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

@@ -14,8 +14,8 @@ development:
   encoding: unicode
   database: tilo_cms
   pool: 5
-  username: 
-  password: 
+  username: postgres
+  password: pg
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -46,5 +46,5 @@ production:
   encoding: unicode
   database: tilo_cms
   pool: 5
-  username: 
-  password: 
+  username: postgres
+  password: pg

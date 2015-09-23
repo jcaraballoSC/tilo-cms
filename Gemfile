@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -15,8 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -26,16 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 #Loader
 gem 'nprogress-rails'
-#Bootswatch
-gem 'bootswatch-rails'
-#Boostrap saas
-gem 'bootstrap-sass', '~> 3.3.5'
 #Angular js
 gem 'angularjs-rails'
-#Necesario para datetimepicker
-gem 'momentjs-rails', '>= 2.9.0'
-#Datepicker
-gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 #Subir archivos
 gem 'carrierwave'
 #Subir directamente a S3
@@ -46,6 +37,12 @@ gem "fog-aws"
 gem 'pg'
 #Figaro
 gem "figaro"
+#Para usar javascript con turbolink
+
+#para windows
+gem 'tzinfo-data'
+gem 'tzinfo'
+gem 'execjs'
 
 
 gem 'passenger'

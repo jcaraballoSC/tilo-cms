@@ -15,21 +15,13 @@
 //= require angular
 //= require angular-resource
 //= require_tree .
-//= require turbolinks
 //= require nprogress
-//= require nprogress-turbolinks
-//= require moment
-//= require bootstrap-datetimepicker
-//= require moment/es
 //= require sortable
-
-
 $(document).ready(function() {
   NProgress.configure({ parent: '#loading' });
   NProgress.configure({ showSpinner: false });
   NProgress.start();
   NProgress.done();
-  
 });
 
 
