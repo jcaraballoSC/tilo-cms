@@ -21,8 +21,7 @@
        <% @uploads.each do |upload| %>
       <div class="list-sor" data-id="<%= media.position %>">
      <span class="move glyphicon glyphicon-move"></span>
-     <img src="<%= media.file_name.url %>" witdth="100px" height="60px">
-      <span class="tx"><%= upload.url %></span>
+      <span class="tx"><%= upload.name %></span>
       <span class="txcheck"><%= check_box_tag "upload_contents[]", upload.id %></span>
     </div>
     <% end %>
