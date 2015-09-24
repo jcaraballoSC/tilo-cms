@@ -37,8 +37,6 @@ gem "fog-aws"
 gem 'pg'
 #Figaro
 gem "figaro"
-#Para usar javascript con turbolink
-
 #para windows
 gem 'tzinfo-data'
 gem 'tzinfo'
