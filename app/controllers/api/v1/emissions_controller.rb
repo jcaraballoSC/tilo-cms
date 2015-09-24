@@ -15,7 +15,7 @@ class Api::V1::EmissionsController < ApplicationController
         @weather_now = WeatherNowUy.where(city: p.state)
         @weather_next_days = WeatherNextDaysUy.where(city: p.state)
         @parse << p.news_source
-        @uploads = Medium.where(emission_id: p.id)
+        @uploads = Upload.where(emission_id: p.id)
         @powers = Power.where(emission_id: p.id)
       end
       @parse.each do |u|
