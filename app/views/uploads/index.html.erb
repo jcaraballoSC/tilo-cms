@@ -21,7 +21,7 @@
        <% @uploads.each do |upload| %>
       <div class="list-sor" data-id="<%= upload.position %>">
      <span class="move glyphicon glyphicon-move"></span>
-      <span class="tx"><%= upload.name %></span>
+      <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
       <span class="txcheck"><%= check_box_tag "upload_contents[]", upload.id %></span>
     </div>
     <% end %>
@@ -37,7 +37,7 @@
         <h4 class="modal-title" id="myModalLabel">Subir nuevos archivos</h4>
       </div>
       <div class="modal-body">
-    <%= form_for@upload,:html => {:multipart => true} do |f| %>
+    <%= form_for @upload,:html => {:multipart => true} do |f| %>
 	 <%= hidden_field_tag :emission_id, @emission.id%>
       <div class="form-group">
       <%= f.label :start_publish, 'Inicio', :class => 'col-lg-2 control-label' %>
