@@ -88,8 +88,7 @@ if (!@message)
 	end
 
 	json.Contents (@uploads) do |upload|
-		json.path upload.path
-		json.md5 upload.md5
+		json.name upload.name
 		json.start_publish upload.start_publish
 		json.end_publish upload.end_publish
 		json.position upload.position
