@@ -1,0 +1,17 @@
+<%= form_for(@soft_update) do |f| %>
+  <% if @soft_update.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@soft_update.errors.count, "error") %> prohibited this soft_update from being saved:</h2>
+
+      <ul>
+      <% @soft_update.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

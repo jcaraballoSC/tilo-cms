@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :soft_updates
+  resources :key_auths
+
   resources :sports
   resources :users
   resources :trades
@@ -29,6 +32,11 @@ Rails.application.routes.draw do
       get 'uploads/new/:id', to: 'uploads#new'
       post 'uploads', to: 'uploads#create'
       delete 'uploads_delete', to: 'uploads#destroy'
+
+      get 'licences', to: 'key_auths#index'
+
+      get 'soft_updates', to: 'soft_updates#index'
+
 
     end
       #Establece la pagina de login es la home para los usuarios no logueados

@@ -1,0 +1,2 @@
+module SoftUpdatesHelper
+end

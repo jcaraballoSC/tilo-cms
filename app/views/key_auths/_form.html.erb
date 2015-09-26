@@ -1,0 +1,17 @@
+<%= form_for(@key_auth) do |f| %>
+  <% if @key_auth.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@key_auth.errors.count, "error") %> prohibited this key_auth from being saved:</h2>
+
+      <ul>
+      <% @key_auth.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,9 +1,11 @@
 class SportsController < ApplicationController
   before_action :set_sport, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /sports
   # GET /sports.json
   def index
+    @title_main = "Lista de deportes"
     @sports = Sport.all
   end
 
@@ -14,6 +16,7 @@ class SportsController < ApplicationController
 
   # GET /sports/new
   def new
+    @title_main = "Agregar nuevo deporte"
     @sport = Sport.new
   end
 

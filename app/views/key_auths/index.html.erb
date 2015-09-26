@@ -1,0 +1,29 @@
+  <ul class="breadcrumb">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/licences">Licencias</a></li>
+    <li class="active">Lista</li>
+  </ul>
+  <%= render 'shared/flash.html.erb' %>
+  <h2 class="title-panel"><%= @title_main %></h2>
+  <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+      <th>LLave</th>
+      <th>Estado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+  <tbody>
+    <% @key_auths.each do |key_auth| %>
+      <tr>
+        <td><%= key_auth.key_server %></td>
+        <td><%= key_auth.key_status %></td>
+        <td width="140px">
+        <%= link_to 'Eliminar',key_auth, method: :delete, data: { confirm: 'Está seguro que desea eliminar la empresa?', :class=>"btn btn-primary btn-sm"  } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

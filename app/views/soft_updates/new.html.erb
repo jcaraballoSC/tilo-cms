@@ -1,0 +1,10 @@
+<%= form_for @soft_update,:html => {:multipart => true,:class => "form"} do |f| %>
+         <div class="fileUpload btn btn-primary">
+		<span>Elegir archivos...</span>
+        <%= f.file_field :name, class: 'upload'%>
+        </div>
+        </div>
+          <div class="btnsub">
+           <%= f.submit "Subir archivos", :class => 'btn btn-primary pull-right upload' %>
+          </div>
+        <% end %>

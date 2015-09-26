@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: [:show, :edit, :update]
-
+  
   # GET /uploads
   def index
     @uploads = Upload.where(emission_id: params[:id])
@@ -46,7 +46,7 @@ class UploadsController < ApplicationController
   def destroy
     Upload.where(id: params[:upload_contents]).destroy_all
     puts params[:upload_contents]
-    redirect_to :back, notice: 'Los archivos fueron borrados correctamente..'
+    redirect_to :back, notice: 'Los archivos fueron borrados correctamente.'
   end
 
   private

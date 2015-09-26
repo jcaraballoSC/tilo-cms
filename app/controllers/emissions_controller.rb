@@ -2,8 +2,6 @@ class EmissionsController < ApplicationController
   before_action :set_emission, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
- 
-
   # GET /emissions
   # GET /emissions.json
   def index
