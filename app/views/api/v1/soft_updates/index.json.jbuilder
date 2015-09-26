@@ -1,5 +1,5 @@
 json.Updates do
   @updates.each{ |update|
-  json.file update.name
+	update.name
 }
 end
