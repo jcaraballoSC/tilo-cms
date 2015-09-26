@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       namespace :v1 do
         get '/', to: 'emissions#index', as: 'emissions'
         post '/', to: 'emissions#create'
+        get '/soft_updates', to: 'soft_updates#index'
       end
     end
 
