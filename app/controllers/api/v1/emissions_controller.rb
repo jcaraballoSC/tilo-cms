@@ -10,7 +10,7 @@ class Api::V1::EmissionsController < ApplicationController
       @news_source = Array.new
       #Trae todos los datos asociados a la llave
       @emission = Emission.where(key: key_client_key_server)
-      #Envío de datos a json 
+      #Envío de datos especificos a json 
       @emission.each do |p|
         @weather_now = WeatherNowUy.where(city: p.state)
         @weather_next_days = WeatherNextDaysUy.where(city: p.state)

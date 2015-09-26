@@ -8,7 +8,7 @@
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
    <i class="glyphicon glyphicon-upload"></i> Subir archivos</button>
   </div>
-          <%= form_tag '/delete_media', method: :delete do %>
+          <%= form_tag '/uploads_delete', method: :delete do %>
           <div class="row">
             <div class="col-lg-6">
               <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger", disabled: @uploads.empty? %>
@@ -22,6 +22,9 @@
       <div class="list-sor" data-id="<%= upload.position %>">
      <span class="move glyphicon glyphicon-move"></span>
       <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
+      <span class="tx"><%= upload.start_publish %></span>
+      <span class="tx"><%= upload.end_publish %></span>
+      <span class="tx"><%= upload.time_to_air %></span>
       <span class="txcheck"><%= check_box_tag "upload_contents[]", upload.id %></span>
     </div>
     <% end %>
@@ -36,7 +39,7 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       </div>
       <div class="modal-body">
-   <%= form_for@upload,:html => {:multipart => true} do |f| %>
+   <%= form_for@upload,:html => {:multipart => true,:class => "form"} do |f| %>
 	 <%= hidden_field_tag :emission_id, @emission.id%>
       <div class="form-group med">
       <%= f.label :start_publish, 'Inicio', :class => 'col-lg-2 control-label' %>
@@ -60,6 +63,10 @@
            <%= f.submit "Subir archivos", :class => 'btn btn-primary pull-right upload' %>
           </div>
         <% end %>
+      </div>
+      <div class="loading" style="display: none">
+    	  Loading…
+	
       </div>
       <div class="modal-footer">
       </div>
@@ -108,3 +115,12 @@ $(document).on('page:load', ready);
 </script>
 
 
+<script type="text/javascript">
+ $(document).ready(function(){
+$("input[name='commit']").on("click", function(){
+    $('.form').replaceWith('<div id="loading"><img src="/assets/Preloader_3.gif" class="lod">\
+    	</br>Subiendo los archivos.</br>Aguarde un instante.</div>').show();
+    $("form").submit();
+});
+ });
+</script>

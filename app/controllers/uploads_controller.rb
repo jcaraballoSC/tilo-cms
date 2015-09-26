@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  before_action :set_upload, only: [:show, :edit, :update]
 
   # GET /uploads
   def index
@@ -12,13 +12,6 @@ class UploadsController < ApplicationController
 
   # GET /uploads/1
   def show
-  end
-
-  # GET /uploads/new
-  def new
-    @upload = Upload.new
-    @title_main = "Subir archivos"
-    @emission = Emission.find(params[:id])
   end
 
   # GET /uploads/1/edit
@@ -34,7 +27,7 @@ class UploadsController < ApplicationController
     @upload.time_to_air = '10'
 
     if @upload.save
-      redirect_to :back, notice: 'Upload was successfully created.'
+      redirect_to :back, notice: 'Los archivos fueron cargados correctamente.'
     else
       render :new
     end
@@ -43,7 +36,7 @@ class UploadsController < ApplicationController
   # PATCH/PUT /uploads/1
   def update
     if @upload.update(post_upload_params)
-      redirect_to @upload, notice: 'Upload attachment was successfully updated.'
+      redirect_to @upload, notice: 'Los datos fueron correctamente actualizados.'
     else
       render :edit
     end
@@ -51,8 +44,9 @@ class UploadsController < ApplicationController
 
   # DELETE /uploads/1
   def destroy
-    @upload.destroy
-    redirect_to uploads_url, notice: 'Upload was successfully destroyed.'
+    Upload.where(id: params[:upload_contents]).destroy_all
+    puts params[:upload_contents]
+    redirect_to :back, notice: 'Los archivos fueron borrados correctamente..'
   end
 
   private

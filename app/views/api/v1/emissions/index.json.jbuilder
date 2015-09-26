@@ -1,25 +1,26 @@
 if (!@message)
-	json.System(@emission) do |emission|
-		json.id emission.id
-		json.city emission.city
-		json.template emission.template
-		json.send_restart emission.send_restart
-		json.channel_tv emission.channel
-		json.color emission.color
-		json.sponsor emission.path_sponsor
-		json.type_emission emission.type_emission
-		if emission.type_emission == 'big_screen'
-			json.width emission.width
-			json.height emission.height
-			json.kiosk_mode false
-			@bgscreen = true
-		else
-			json.kiosk_mode true
-			json.caller_fullscreen emission.caller_fullscreen
-			@bgscreen = false
-		end
+json.System do
+  @emission.each{ |emis|
+  json.id emis.id
+  json.city emis.city
+  json.template emis.template
+  json.send_restart emis.send_restart
+  json.channel_tv emis.channel
+  json.color emis.color
+  json.sponsor emis.path_sponsor
+  json.type_emission emis.type_emission
+	if emis.type_emission == 'big_screen'
+		json.width emis.width
+		json.height emis.height
+		json.kiosk_mode false
+		@bgscreen = true
+	else
+		json.kiosk_mode true
+		json.caller_fullscreen emis.caller_fullscreen
+		@bgscreen = false
 	end
-
+}
+end
 	if @bgscreen != true
 		json.Callers(@emission) do |emission|
 			if emission.type_emission == 'big_screen'
@@ -58,16 +59,15 @@ if (!@message)
 			end
 		end
 	end
-	json.Weather (@weather_now) do |weather|
+json.Weather (@weather_now) do |weather|
 		json.temperature weather.temperature
 		json.humidity weather.humidity
 		json.icon weather.icon
 		json.wind weather.wind
 		json.pressure weather.pressure
 		json.description weather.description
-	end
-
-	json.Weather_Next_Days (@weather_next_days) do |weathernd|
+end
+json.Weather_Next_Days (@weather_next_days) do |weathernd|
 		json.temperature_min weathernd.temperature_min
 		json.temperature_max weathernd.temperature_max
 		json.humidity weathernd.humidity
@@ -93,13 +93,14 @@ if (!@message)
 		json.end_publish upload.end_publish
 		json.position upload.position
 	end
-	
+
 	json.Powers (@powers) do |power|
 		json.day power.day
 		json.on power.on
 		json.off power.off
 	end
-
 else
 	json.Error (@message)
 end
+
+

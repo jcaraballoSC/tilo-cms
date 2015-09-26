@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'uploads/:id', to: 'uploads#index'
       get 'uploads/new/:id', to: 'uploads#new'
       post 'uploads', to: 'uploads#create'
+      delete 'uploads_delete', to: 'uploads#destroy'
 
     end
       #Establece la pagina de login es la home para los usuarios no logueados
