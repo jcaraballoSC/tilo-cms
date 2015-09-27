@@ -1,5 +1,6 @@
 json.Updates do
   @updates.each{ |update|
-  json.url update.name
-  json.update update.created_at
+  json.file update.name.url
+  json.updated update.created_at
 }
+end
