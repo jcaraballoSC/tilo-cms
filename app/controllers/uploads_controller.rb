@@ -35,6 +35,7 @@ class UploadsController < ApplicationController
 
   # PATCH/PUT /uploads/1
   def update
+    Upload.where(id: params[:contents_contents])
      params[:order].each do |key,value|
       Upload.find(value[:id]).update_attribute(:position,value[:position])
     end

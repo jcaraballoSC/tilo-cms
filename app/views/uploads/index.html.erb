@@ -24,6 +24,7 @@
       <span class="tx"><%= text_field_tag :start_publish, upload.start_publish, :id =>"start_publish#{upload.id}" %></span>
       <span class="tx"><%= text_field_tag :end_publish, upload.end_publish, :id =>"end_publish#{upload.id}" %></span>
       <span class="tx"><%= text_field_tag :time_to_air, upload.time_to_air, :id =>"time_to_air#{upload.id}" %></span>
+        <span class="txcheck"><%= check_box_tag "contents_contents[]", upload.id, true %></span>
     </div>
     <script type="text/javascript">
  $(document).ready(function(){
