@@ -3,24 +3,67 @@
     <li class="active">Contenidos</li>
   </ul>
   <%= render 'shared/flash.html.erb' %>
-  <h2 class="title-panel"><%= @title_main %></h2>
+  <h2 class="title-panel"><%= @emission.trade.name %> - <%= @emission.name %></h2>
   <div class="button-rigth-action">
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
    <i class="glyphicon glyphicon-upload"></i> Subir archivos</button>
   </div>
-          <%= form_tag '/uploads_delete', method: :delete do %>
-          <div class="row">
-            <div class="col-lg-6">
-              <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger", disabled: @uploads.empty? %>
-            </div>
-          </div>
+
+
+<!-- Editar -->
+  <%= form_tag '/uploads_up', :id => 'formedit', method: :put do %>
+   <%= hidden_field_tag :emission_id, @emission.id%>
       <% if @uploads.empty? %>
                 <h5 id="no-media">No hay contenidos para esta emisión</h5>
               <% else %>
               <div class="sortable">
        <% @uploads.each do |upload| %>
-      <div class="list-sor" data-id="<%= upload.position %>">
+      <div class="list-sort" data-id="<%= upload.position %>">
      <span class="move glyphicon glyphicon-move"></span>
+      <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
+      <span class="tx"><%= text_field_tag :start_publish, upload.start_publish, :id =>"start_publish#{upload.id}" %></span>
+      <span class="tx"><%= text_field_tag :end_publish, upload.end_publish, :id =>"end_publish#{upload.id}" %></span>
+      <span class="tx"><%= text_field_tag :time_to_air, upload.time_to_air, :id =>"time_to_air#{upload.id}" %></span>
+    </div>
+    <script type="text/javascript">
+ $(document).ready(function(){
+  $(function () {
+    $('#start_publish<%=upload.id %>').datetimepicker({
+      format: 'DD/MM/YYYY H:mm'
+      });
+        });
+    $(function () {
+    $('#end_publish<%=upload.id %>').datetimepicker({
+      format: 'DD/MM/YYYY H:mm'
+      });
+        });
+        $(function () {
+    $('#time_to_air<%=upload.id %>').datetimepicker({
+      format: 'mm'
+      });
+        });
+ });
+</script>
+    <% end %>
+<% end %>
+<div class="row">
+          <div class="col-lg-6">
+            <%= submit_tag "Guardar", id: "save", class: "btn btn-primary", disabled: @uploads.empty? %>
+            </div>
+          </div>
+<% end %>
+ </div>
+
+<!-- Fin Editar-->
+
+<!--Eliminar -->
+    <%= form_tag '/uploads_delete', method: :delete do %>
+      <% if @uploads.empty? %>
+                <h5 id="no-media">No hay contenidos para esta emisión</h5>
+              <% else %>
+              <div class="sortable2">
+       <% @uploads.each do |upload| %>
+      <div class="list-sor">
       <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
       <span class="tx"><%= upload.start_publish %></span>
       <span class="tx"><%= upload.end_publish %></span>
@@ -29,10 +72,17 @@
     </div>
     <% end %>
 <% end %>
+<div class="row">
+          <div class="col-lg-6">
+            <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger", disabled: @uploads.empty? %>
+            </div>
+          </div>
 <% end %>
  </div>
+<!-- Fin Eliminar -->
 
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Subir Archivos -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog media">
     <div class="modal-content media">
       <div class="modal-header">
@@ -55,7 +105,7 @@
         </div>
          <div class="form-group">
          <div class="fileUpload btn btn-primary">
-		<span>Elegir archivos...</span>
+		      <span>Elegir archivos...</span>
         <%= f.file_field :name, class: 'upload'%>
         </div>
         </div>
@@ -73,13 +123,14 @@
     </div>
   </div>
 </div>
+<!-- Fin Subir Archivos -->
 <script type="text/javascript">
 var ready, set_positions;
 
 set_positions = function(){
     // loop through and give each task a data-pos
     // attribute that holds its position in the DOM
-    $('.panel.panel-default').each(function(i){
+    $('.list-sort').each(function(i){
         $(this).attr("data-pos",i+1);
     });
 }
@@ -88,8 +139,26 @@ ready = function(){
 
     // call set_positions function
     set_positions();
-    
+
     $('.sortable').sortable();
+
+    // after the order changes
+    $('.sortable').sortable().bind('sortupdate', function(e, ui) {
+        // array to store new order
+        updated_order = []
+        // set the updated positions
+        set_positions();
+
+        // populate the updated_order array with the new task positions
+        $('.list-sort').each(function(i){
+            updated_order.push({ id: $(this).data("id"), position: i+1 });
+        });
+
+        $("#formedit").submit(function(e){
+        data: { order: updated_order }
+    });
+
+    });
 }
 
 $(document).ready(ready);
@@ -97,8 +166,8 @@ $(document).ready(ready);
  * if using turbolinks
  */
 $(document).on('page:load', ready);
-
 </script>
+
 <script type="text/javascript">
  $(document).ready(function(){
   $(function () {
@@ -115,12 +184,13 @@ $(document).on('page:load', ready);
 </script>
 
 
+
 <script type="text/javascript">
  $(document).ready(function(){
 $("input[name='commit']").on("click", function(){
     $('.form').replaceWith('<div id="loading"><img src="/assets/Preloader_3.gif" class="lod">\
     	</br>Subiendo los archivos.</br>Aguarde un instante.</div>').show();
-    $("form").submit();
+    $(".form").submit();
 });
  });
 </script>

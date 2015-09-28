@@ -7,6 +7,7 @@ class SoftUpdatesController < ApplicationController
   def index
     @title_main = "Lista de actualizaciones"
     @soft_updates = SoftUpdate.all
+    @soft_update = SoftUpdate.new
   end
 
   # GET /soft_updates/1

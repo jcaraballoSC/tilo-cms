@@ -2,12 +2,10 @@ Rails.application.routes.draw do
 
   resources :soft_updates
   resources :key_auths
-
   resources :sports
   resources :users
   resources :trades
   resources :emissions
-
   devise_for :users
 
   devise_scope :user do
@@ -32,6 +30,7 @@ Rails.application.routes.draw do
       get 'uploads/new/:id', to: 'uploads#new'
       post 'uploads', to: 'uploads#create'
       delete 'uploads_delete', to: 'uploads#destroy'
+      put 'uploads_up', to: 'uploads#update'
 
       get 'licences', to: 'key_auths#index'
 

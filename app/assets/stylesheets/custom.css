@@ -195,10 +195,18 @@ fieldset
   padding: 10px;
   margin-top: 5%;
   list-style: none; 
-
 }
 
-.list-sor
+.sortable2
+{
+  display: list-item;
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 5%;
+  list-style: none; 
+}
+
+.list-sor 
 { width: 100%;
   height: 81px;
   border-radius: 2px;
@@ -210,6 +218,17 @@ fieldset
   padding-top: 1%;
 }
 
+.list-sort
+{ width: 100%;
+  height: 81px;
+  border-radius: 2px;
+  margin-bottom: 13px;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  list-style: none;
+  padding-left: 1%;
+  padding-top: 1%;
+}
 .move
 {
   color: #C3C3C3;
@@ -437,3 +456,7 @@ fieldset
   float: left;
 }
 
+.title-emission
+{
+  font-size: x-large;
+}

@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_action :set_upload, only: [:show, :edit, :update]
+  before_action :set_upload, only: [:show, :edit]
   
   # GET /uploads
   def index
@@ -35,17 +35,15 @@ class UploadsController < ApplicationController
 
   # PATCH/PUT /uploads/1
   def update
-    if @upload.update(post_upload_params)
-      redirect_to @upload, notice: 'Los datos fueron correctamente actualizados.'
-    else
-      render :edit
+     params[:order].each do |key,value|
+      Upload.find(value[:id]).update_attribute(:position,value[:position])
     end
+
   end
 
   # DELETE /uploads/1
   def destroy
     Upload.where(id: params[:upload_contents]).destroy_all
-    puts params[:upload_contents]
     redirect_to :back, notice: 'Los archivos fueron borrados correctamente.'
   end
 
