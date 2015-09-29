@@ -18,13 +18,14 @@
               <% else %>
               <div class="sortable">
        <% @uploads.each do |upload| %>
-      <div class="list-sort" data-id="<%= upload.position %>">
-     <span class="move glyphicon glyphicon-move"></span>
+    <div class="list-sort" data-id="<%= upload.position %>">
+      <%= hidden_field_tag "upload[][position]", upload.position, :id =>"position#{upload.id}", class: 'list-position' %>
+      <span class="move glyphicon glyphicon-move"></span>
       <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
-      <span class="tx"><%= text_field_tag :start_publish, upload.start_publish, :id =>"start_publish#{upload.id}" %></span>
-      <span class="tx"><%= text_field_tag :end_publish, upload.end_publish, :id =>"end_publish#{upload.id}" %></span>
-      <span class="tx"><%= text_field_tag :time_to_air, upload.time_to_air, :id =>"time_to_air#{upload.id}" %></span>
-        <span class="txcheck"><%= check_box_tag "contents_contents[]", upload.id, true %></span>
+      <span class="tx"><%= text_field_tag "upload[][start_publish]", upload.start_publish, :id =>"start_publish#{upload.id}" %></span>
+      <span class="tx"><%= text_field_tag "upload[][end_publish]", upload.end_publish, :id =>"end_publish#{upload.id}" %></span>
+      <span class="tx"><%= text_field_tag "upload[][time_to_air]", upload.time_to_air, :id =>"time_to_air#{upload.id}" %></span>
+      <span class="txcheck"><%= check_box_tag "upload[][contents_contents]", upload.id, true %></span>
     </div>
     <script type="text/javascript">
  $(document).ready(function(){
@@ -117,7 +118,7 @@
       </div>
       <div class="loading" style="display: none">
     	  Loading…
-	
+
       </div>
       <div class="modal-footer">
       </div>
@@ -133,6 +134,10 @@ set_positions = function(){
     // attribute that holds its position in the DOM
     $('.list-sort').each(function(i){
         $(this).attr("data-pos",i+1);
+        $('').val(i);
+    });
+    $('.list-position').each(function(i){
+        $(this).val(i+1);
     });
 }
 

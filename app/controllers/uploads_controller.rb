@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: [:show, :edit]
-  
+
   # GET /uploads
   def index
     @uploads = Upload.where(emission_id: params[:id])
@@ -35,11 +35,10 @@ class UploadsController < ApplicationController
 
   # PATCH/PUT /uploads/1
   def update
-    Upload.where(id: params[:contents_contents])
-     params[:order].each do |key,value|
-      Upload.find(value[:id]).update_attribute(:position,value[:position])
+    params[:upload].each do |value|
+      Upload.find(value[:contents_contents]).update(attr_upload(value))
     end
-
+    redirect_to :back, notice: 'Los archivos fueron actualizados correctamente.'
   end
 
   # DELETE /uploads/1
@@ -57,5 +56,15 @@ class UploadsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_upload_params
       params.require(:upload).permit(:name,:start_publish, :end_publish, :emission_id)
+    end
+
+    # load params upload
+    def attr_upload(value)
+      {
+        position: value[:position],
+        start_publish: value[:start_publish],
+        end_publish: value[:end_publish],
+        time_to_air: value[:time_to_air]
+      }
     end
 end
