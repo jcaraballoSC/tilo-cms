@@ -6,7 +6,7 @@
   <h2 class="title-panel"><%= @emission.trade.name %> - <%= @emission.name %></h2>
   <div class="button-rigth-action">
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-   <i class="glyphicon glyphicon-upload"></i> Subir archivos</button>
+   <i class="glyphicon glyphicon-upload"></i> Subir archivo</button>
   </div>
   <div class="btn-group btn-group-justified">
   <a href="#" class="btn btn-default" id="edit">Editar</a>
@@ -106,12 +106,12 @@
         </div>
          <div class="form-group">
          <div class="fileUpload btn btn-primary">
-		      <span>Elegir archivos...</span>
-        <%= f.file_field  :name, multiple: true, class: 'upload'%>
+		      <span>Elegir archivo...</span>
+        <%= f.file_field  :name, class: 'upload'%>
         </div>
         </div>
           <div class="btnsub">
-           <%= f.submit "Subir archivos", :class => 'btn btn-primary pull-right upload' %>
+           <%= f.submit "Subir archivo", :class => 'btn btn-primary pull-right upload' %>
           </div>
         <% end %>
       </div>
