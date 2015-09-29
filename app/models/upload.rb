@@ -1,5 +1,5 @@
 class Upload < ActiveRecord::Base
-	mount_uploader :name, ImageUploader
+	mount_uploaders :name, ImageUploader
 
 
    default_scope { order("position ASC") }

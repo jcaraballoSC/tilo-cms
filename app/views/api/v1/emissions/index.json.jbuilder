@@ -59,14 +59,18 @@ end
 			end
 		end
 	end
-json.Weather (@weather_now) do |weather|
-		json.temperature weather.temperature
-		json.humidity weather.humidity
-		json.icon weather.icon
-		json.wind weather.wind
-		json.pressure weather.pressure
-		json.description weather.description
+
+json.Weather do
+  @weather_now.each{ |weather|
+  json.temperature weather.temperature
+  json.humidity weather.humidity
+  json.icon weather.icon
+  json.wind weather.wind
+  json.pressure weather.pressure
+  json.description weather.description
+}
 end
+
 json.Weather_Next_Days (@weather_next_days) do |weathernd|
 		json.temperature_min weathernd.temperature_min
 		json.temperature_max weathernd.temperature_max

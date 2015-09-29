@@ -28,7 +28,8 @@ gem 'nprogress-rails'
 #Angular js
 gem 'angularjs-rails'
 #Subir archivos
-gem 'carrierwave'
+#gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 #Subir directamente a S3
 gem 'carrierwave_direct'
 #Integracion de Fog con AWS

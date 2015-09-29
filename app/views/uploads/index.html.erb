@@ -8,7 +8,10 @@
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
    <i class="glyphicon glyphicon-upload"></i> Subir archivos</button>
   </div>
-
+  <div class="btn-group btn-group-justified">
+  <a href="#" class="btn btn-default" id="edit">Editar</a>
+  <a href="#" class="btn btn-default" id="delete">Eliminar</a>
+</div>
 
 <!-- Editar -->
   <%= form_tag '/uploads_up', :id => 'formedit', method: :put do %>
@@ -22,10 +25,10 @@
       <%= hidden_field_tag "upload[][position]", upload.position, :id =>"position#{upload.id}", class: 'list-position' %>
       <span class="move glyphicon glyphicon-move"></span>
       <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
-      <span class="tx"><%= text_field_tag "upload[][start_publish]", upload.start_publish, :id =>"start_publish#{upload.id}" %></span>
-      <span class="tx"><%= text_field_tag "upload[][end_publish]", upload.end_publish, :id =>"end_publish#{upload.id}" %></span>
-      <span class="tx"><%= text_field_tag "upload[][time_to_air]", upload.time_to_air, :id =>"time_to_air#{upload.id}" %></span>
-      <span class="txcheck"><%= check_box_tag "upload[][contents_contents]", upload.id, true %></span>
+      <span class="tx"><%=label_tag 'Inicio', nil, class: 'small_label' %><%= text_field_tag "upload[][start_publish]", upload.start_publish, :id =>"start_publish#{upload.id}" %></span>
+      <span class="tx"><%=label_tag 'Fin', nil, class: 'small_label'%><%= text_field_tag "upload[][end_publish]", upload.end_publish, :id =>"end_publish#{upload.id}" %></span>
+      <span class="tx"><%=label_tag 'Duración', nil, class: 'small_label'%><%= text_field_tag "upload[][time_to_air]", upload.time_to_air, :id =>"time_to_air#{upload.id}" %></span>
+      <span class="txcheck"><%= hidden_field_tag "upload[][contents_contents]", upload.id %></span>
     </div>
     <script type="text/javascript">
  $(document).ready(function(){
@@ -48,10 +51,8 @@
 </script>
     <% end %>
 <% end %>
-<div class="row">
-          <div class="col-lg-6">
-            <%= submit_tag "Guardar", id: "save", class: "btn btn-primary", disabled: @uploads.empty? %>
-            </div>
+  <div class="actions">
+            <%= submit_tag "Guardar", id: "save", class: "btn btn-primary pull-right", disabled: @uploads.empty? %>
           </div>
 <% end %>
  </div>
@@ -59,7 +60,7 @@
 <!-- Fin Editar-->
 
 <!--Eliminar -->
-    <%= form_tag '/uploads_delete', method: :delete do %>
+    <%= form_tag '/uploads_delete', :id => 'formdelete', method: :delete do %>
       <% if @uploads.empty? %>
                 <h5 id="no-media">No hay contenidos para esta emisión</h5>
               <% else %>
@@ -67,18 +68,16 @@
        <% @uploads.each do |upload| %>
       <div class="list-sor">
       <span class="tx"><img src="<%= upload.name %>" witdth="100px" height="60px"></span>
-      <span class="tx"><%= upload.start_publish %></span>
-      <span class="tx"><%= upload.end_publish %></span>
-      <span class="tx"><%= upload.time_to_air %></span>
+      <span class="tx"><%=label_tag 'Inicio', nil, class: 'small_label' %><%= upload.start_publish %></span>
+      <span class="tx"><%=label_tag 'Fin', nil, class: 'small_label' %><%= upload.end_publish %></span>
+      <span class="tx"><%=label_tag 'Duración', nil, class: 'small_label' %><%= upload.time_to_air %></span>
       <span class="txcheck"><%= check_box_tag "upload_contents[]", upload.id %></span>
     </div>
     <% end %>
 <% end %>
-<div class="row">
-          <div class="col-lg-6">
-            <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger", disabled: @uploads.empty? %>
+ <div class="actions">
+            <%= submit_tag "Eliminar", id: "delete", class: "btn btn-danger pull-right", disabled: @uploads.empty? %>
             </div>
-          </div>
 <% end %>
  </div>
 <!-- Fin Eliminar -->
@@ -108,7 +107,7 @@
          <div class="form-group">
          <div class="fileUpload btn btn-primary">
 		      <span>Elegir archivos...</span>
-        <%= f.file_field :name, class: 'upload'%>
+        <%= f.file_field  :name, multiple: true, class: 'upload'%>
         </div>
         </div>
           <div class="btnsub">
@@ -186,7 +185,20 @@ $(document).on('page:load', ready);
       format: 'DD/MM/YYYY H:mm'
       });
         });
+
+    $("#formdelete").hide();
  });
+
+ $("#edit").click(function(){
+    $("#formdelete").hide();
+    $("#formedit").show();
+});
+
+$("#delete").click(function(){
+  event.preventDefault();
+    $("#formdelete").show();
+    $("#formedit").hide();
+});
 </script>
 
 

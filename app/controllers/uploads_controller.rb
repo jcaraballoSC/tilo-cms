@@ -55,7 +55,7 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_upload_params
-      params.require(:upload).permit(:name,:start_publish, :end_publish, :emission_id)
+      params.require(:upload).permit(:start_publish, :end_publish, :emission_id, name: [])
     end
 
     # load params upload
