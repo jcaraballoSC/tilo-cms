@@ -69,6 +69,7 @@ json.Weather do
   json.pressure weather.pressure
   json.description weather.description
 }
+end
 
 json.Weather_Next_Days (@weather_next_days) do |weathernd|
 		json.temperature_min weathernd.temperature_min
