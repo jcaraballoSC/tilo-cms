@@ -1,18 +1,25 @@
   <div class="nav-side-menu">
   	<ul class="nav navbar-nav navul">
   	  <% @emisiones_rel.group_by(&:trade).each do |trade, emission| %>
-  		 <li class="dropdown dropdown-up">
-    		 	<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-align-justify glyfloat"></span><%= trade.name %> <b class="caret"></b></a>
+      <% open = false %>
+      <% unless @emission.nil?
+          open = true if trade.id == @emission.trade.id
+        end %>
+      <li class="dropdown dropdown-up <%= 'open' if open %>">
+    		 	<a href="#" data-toggle="dropdown" aria-expanded="<%= 'true' if open %>" class="dropdown-toggle">
+            <span class="glyphicon glyphicon-align-justify glyfloat"></span><%= trade.name %> <b class="caret"></b>
+          </a>
         		<ul class="dropdown-menu dropdown-inter">
-        		<% emission.each do |emission| %>
-                <li class="interlink"><span class="glyphicon glyphicon-record"></span><a href="/media/<%= emission.id %>" class="link_to"><%= emission.name %></a></li>
+        		  <% emission.each do |emission| %>
+                <li class="interlink"><span class="glyphicon glyphicon-record"></span><a href="/uploads/<%= emission.id %>" class="link_to"><%= emission.name %></a></li>
                 <div class="separ"></div>
              <% end %>
-          </ul>
-       <% end %>
-    </li>
+            </ul>
+      <% end %>
+      </li>
    </ul>
 </div>
 
 
-        
+
+
