@@ -195,6 +195,8 @@ fieldset
   padding: 10px;
   margin-top: 5%;
   list-style: none; 
+  margin-bottom: 6%;
+  padding-bottom: 3%;
 }
 
 .sortable2
@@ -255,7 +257,7 @@ fieldset
 
 .tx
 {
-  padding-left: 9%;
+  padding-left: 7%;
 }
 
 .txcheck
@@ -459,4 +461,9 @@ fieldset
 .title-emission
 {
   font-size: x-large;
+}
+
+.small_label
+{
+  padding-right: 1%;
 }
