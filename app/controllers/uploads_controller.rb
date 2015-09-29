@@ -20,17 +20,11 @@ class UploadsController < ApplicationController
 
   # POST /uploads
   def create
-    @upload = Upload.new(post_upload_params)
-    @upload.start_publish = params[:upload][:start_publish]
-    @upload.end_publish = params[:upload][:end_publish]
-    @upload.emission_id = params[:emission_id]
-    @upload.time_to_air = '10'
-
-    if @upload.save
-      redirect_to :back, notice: 'Los archivos fueron cargados correctamente.'
-    else
-      render :new
+    params[:upload][:name].each do |value|
+      @upload = Upload.new(new_upload_params(value))
+      return render :new unless @upload.save
     end
+    redirect_to :back, notice: 'Los archivos fueron cargados correctamente.'
   end
 
   # PATCH/PUT /uploads/1
@@ -56,6 +50,17 @@ class UploadsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_upload_params
       params.require(:upload).permit(:start_publish, :end_publish, :emission_id, name: [])
+    end
+
+    # new params
+    def new_upload_params(value)
+      {
+        start_publish: params[:upload][:start_publish],
+        end_publish: params[:upload][:end_publish],
+        emission_id: params[:emission_id],
+        time_to_air: '10',
+        name: value
+      }
     end
 
     # load params upload
