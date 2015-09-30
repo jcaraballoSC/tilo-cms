@@ -6,7 +6,7 @@
           open = true if trade.id == @emission.trade.id
         end %>
       <li class="dropdown dropdown-up <%= 'open' if open %>">
-    		 	<a href="#" data-toggle="dropdown" aria-expanded="<%= 'true' if open %>" class="dropdown-toggle">
+    		 	<a href="#" aria-expanded="<%= 'true' if open %>" class="dropdown-toggle">
             <span class="glyphicon glyphicon-align-justify glyfloat"></span><%= trade.name %> <b class="caret"></b>
           </a>
         		<ul class="dropdown-menu dropdown-inter">
@@ -20,6 +20,13 @@
    </ul>
 </div>
 
-
+<style>
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .dropdown-menu {
+      margin-top: 0px;
+  }
+</style>
 
 
