@@ -2,7 +2,7 @@
   	<ul class="nav navbar-nav navul">
   	  <% @emisiones_rel.group_by(&:trade).each do |trade, emission| %>
       <% open = false %>
-      <% unless @emission.nil?
+      <% unless @emission.nil? || @emission.id.nil?
           open = true if trade.id == @emission.trade.id
         end %>
       <li class="dropdown dropdown-up <%= 'open' if open %>">
@@ -28,5 +28,14 @@
       margin-top: 0px;
   }
 </style>
+
+<script>
+  $(document).ready(function() {
+    $('.dropdown').click( function(){
+      $('.dropdown').removeClass('open')
+      $(this).addClass('open')
+    })
+  });
+</script>
 
 
