@@ -467,3 +467,12 @@ fieldset
 {
   padding-right: 1%;
 }
+
+.dropdown:hover .dropdown-menu 
+{
+  display: block;
+}
+.dropdown-menu 
+{
+  margin-top: 0px;
+}
