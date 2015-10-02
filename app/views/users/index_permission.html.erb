@@ -19,10 +19,10 @@
       <tr>
         <td><%= emission.name %></td>
         <td width="140px">
-          <% if (emission.users.present?) %>
+          <% if @user.emissions.exists?(id: emission.id) %>
               <%=  link_to "Eliminar Permisos", permissions_create_path(@user.id,emission.id), method: :delete, class: "btn btn-danger btn-flat btn-sm md-trigger" %>
           <% else %>
-               <%=  link_to "Agregar Permisos", permissions_delete_path(@user.id,emission.id), class: "btn btn-primary btn-flat btn-sm md-trigger" %> 
+               <%=  link_to "Agregar Permisos", permissions_delete_path(@user.id,emission.id), class: "btn btn-primary btn-flat btn-sm md-trigger" %>
           <% end %>
           </div>
         </td>
